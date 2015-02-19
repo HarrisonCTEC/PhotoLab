@@ -183,7 +183,19 @@ public class Picture extends SimplePicture
 	  {
 		  for (Pixel pixelObj : rowArray)
 		  {
-			 pixelObj.setBlue(0);
+			  if (pixelObj.getBlue() < pixelObj.getGreen())
+			  {
+				  int avgColor = (pixelObj.getRed() + pixelObj.getBlue() + pixelObj.getGreen()) / 3;
+				  pixelObj.setRed(avgColor);
+				  pixelObj.setBlue(avgColor);
+				  pixelObj.setGreen(avgColor);
+			  }
+			  else
+			  {
+				  pixelObj.setGreen(pixelObj.getGreen() - 30);
+				  pixelObj.setBlue(pixelObj.getBlue() - 30);
+			  }
+			
 		  }
 	  }
   }

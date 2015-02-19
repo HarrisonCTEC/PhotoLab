@@ -23,7 +23,7 @@ public class FauxToeShopPanel extends JPanel
 	private JScrollPane imagePane;
 	private SpringLayout baseLayout;
 	
-	String [] fileArray = {"beach.jpg", "temple.jpg"};
+	String [] fileArray = {"beach.jpg", "temple.jpg", "water.jpg"};
 	
 	private String basePictureFile = "beach.jpg";
 	

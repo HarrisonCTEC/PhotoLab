@@ -313,6 +313,28 @@ public class Picture extends SimplePicture
     }
   }
   
+  public void chromakey()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Picture otherPicture = new Picture();
+	  otherPicture.load("beach.jpg");
+	  Pixel[][] otherPixels = otherPicture.getPixels2D();
+	  for (int row = 0; row < pixels.length; row++)
+	  {
+		  for (int col = 0; col < pixels[0].length; col++)
+		  {
+			 Pixel pixelObj = pixels[row][col];
+			 
+			 if (pixelObj.getGreen() * 0.6 > (pixelObj.getRed() + pixelObj.getBlue()) / 2)
+			 {
+				 Pixel otherPixel = otherPixels[row][col];
+				 
+				 pixelObj.setColor(otherPixel.getColor());
+			 }
+		  }
+	  }
+  }
+  
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture

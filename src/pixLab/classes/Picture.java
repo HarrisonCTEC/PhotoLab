@@ -335,6 +335,44 @@ public class Picture extends SimplePicture
 	  }
   }
   
+  public void encodeBlackWhite()
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Picture otherPicture = new Picture();
+	  otherPicture.load("secretMessage.jpg");
+	  Pixel[][] otherPixels = otherPicture.getPixels2D();
+	  for (int row = 0; row < pixels.length; row++)
+	  {
+		  for (int col = 0; col < pixels[0].length; col++)
+		  {
+			 Pixel pixelObj = pixels[row][col];
+			 Pixel otherPixel;
+			 if (col < otherPixels[0].length && row < otherPixels.length)
+			 {
+				 otherPixel = otherPixels[row][col];
+			 }
+			 else
+			 {
+				 otherPixel = otherPixels[otherPixels.length - 1][otherPixels[0].length - 1];
+			 }
+
+			 
+			 if ((otherPixel.getRed() + otherPixel.getBlue() + otherPixel.getGreen()) / 3 > 127)
+			 {
+				 if (pixelObj.getRed() % 2 == 0 && otherPixel.getRed() % 2 != 0 )
+				 {
+					pixelObj.setRed(pixelObj.getRed() + 1);
+				 }
+				 else if (pixelObj.getRed() % 2 != 0 && otherPixel.getRed() % 2 == 0)
+				 {
+					pixelObj.setRed(pixelObj.getRed() - 1);
+				 }
+
+			 }
+		  }
+	  }
+  }
+  
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
     * current picture

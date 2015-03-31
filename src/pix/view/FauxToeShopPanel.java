@@ -23,7 +23,7 @@ public class FauxToeShopPanel extends JPanel
 	private JScrollPane imagePane;
 	private SpringLayout baseLayout;
 	
-	String [] fileArray = {"beach.jpg", "temple.jpg", "water.jpg", "greenscreen.jpg"};
+	String [] fileArray = {"beach.jpg", "temple.jpg", "water.jpg", "greenscreen.jpg", "secretMessage.jpg"};
 	
 	private String basePictureFile = "beach.jpg";
 	
@@ -57,7 +57,7 @@ public class FauxToeShopPanel extends JPanel
 	
 	private void setupComboBox()
 	{
-		String [] filterArray = {"Default", "zero blue", "Keep only blue", "Keep only red", "Keep only green", "Negative", "Grayscale", "Fix underwater", "Mirror vertical", "Mirror vertical right to left", "Mirror horizontal", "Mirror horizontal bottom to top", "Mirror diagonal", "Chromakey"};
+		String [] filterArray = {"Default", "zero blue", "Keep only blue", "Keep only red", "Keep only green", "Negative", "Grayscale", "Fix underwater", "Mirror vertical", "Mirror vertical right to left", "Mirror horizontal", "Mirror horizontal bottom to top", "Mirror diagonal", "Chromakey", "Encode"};
 		filterBox = new JComboBox(filterArray);
 		baseLayout.putConstraint(SpringLayout.NORTH, filterBox, 10, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.WEST, filterBox, 10, SpringLayout.WEST, this);
@@ -112,6 +112,7 @@ public class FauxToeShopPanel extends JPanel
 		case 11: basePicture.mirrorHorizontalBottomToTop(); break;
 		case 12: basePicture.mirrorDiagonal(); break;
 		case 13: basePicture.chromakey(); break;
+		case 14: basePicture.encodeBlackWhite(); break;
 		}
 		setupPicture();
 	}
